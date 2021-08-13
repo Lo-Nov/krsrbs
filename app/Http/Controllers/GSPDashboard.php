@@ -5,13 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class GSPDashboard extends Controller
 {
+    public function __construct()
+    {
+        if (Session::get('is_login') != 1) {
+            Session::put('url', url()->current());
+            return redirect()->route('login');
+        }
+
+    }
 
     public function dashboard(){
-
         $url = config('base.main_URL').'/parking/reporting/dashboard';
 
         $this->data['dashboard'] = json_decode(Http::get($url)->body());
@@ -20,6 +28,12 @@ class GSPDashboard extends Controller
     }
 
     public function categories(){
+
+        if (Session::get('is_login') != 1) {
+            Session::put('url', url()->current());
+            return redirect()->route('login');
+        }
+
         $url = config('base.main_URL').'/parking/settings/categories';
         $this->data['categories'] = json_decode(Http::get($url)->body());
 

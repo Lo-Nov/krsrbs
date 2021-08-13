@@ -11,10 +11,10 @@
                     <!-- Logo -->
                     <div class="auth-brand text-center text-lg-start">
                         <a href="index.html" class="logo-dark">
-                            <span><img src="assets/images/logo2.png" alt="" height="18"></span>
+                            <span><img src="assets/images/logo5.png" alt="" height="90"></span>
                         </a>
                         <a href="index.html" class="logo-light">
-                            <span><img src="assets/images/logo2.png" alt="" height="18"></span>
+                            <span><img src="assets/images/logo5.png" alt="" height="90"></span>
                         </a>
                     </div>
 
@@ -79,7 +79,7 @@
         <div class="auth-fluid-right text-center">
             <div class="auth-user-testimonial">
                 <h2 class="mb-3">I love the color!</h2>
-                <p class="lead"><i class="mdi mdi-format-quote-open"></i> It's a elegent templete. I love it very much! . <i class="mdi mdi-format-quote-close"></i>
+                <p class="lead"><i class="mdi mdi-format-quote-open"></i> To be a model retirement benefit scheme providing comfort and dignity to members! . <i class="mdi mdi-format-quote-close"></i>
                 </p>
                 <p>
                     - Hyper Admin User
