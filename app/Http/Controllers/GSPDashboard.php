@@ -97,6 +97,46 @@ class GSPDashboard extends Controller
         $response = json_decode(Http::post($url,$data)->body());
         return response()->json($response);
     }
+    public function checkinpostpay(){
+        if (Session::get('is_login') != 1) {
+            Session::put('url', url()->current());
+            return redirect()->route('login');
+        }
+        $url = config('base.main_URL').'/parking/reporting/checkins';
+
+        $dt = Carbon::now();
+        $dt->toDateString();
+
+        $data=[
+            'start_date'=> "",
+            'end_date'=> ""
+        ];
+
+        $this->data['checkins'] = json_decode(Http::post($url,$data)->body());
+
+        //dd($this->data);
+
+        return view('payments.checkin-post')->with($this->data);
+    }
+    public function pushpayment(Request $request){
+        $url = config('base.main_URL').'/parking/payment';
+
+        $request->validate([
+            'reference'=>'required',
+            'number_plate'=>'required',
+            'amount_paid'=>'required',
+            'transaction_date'=>'required',
+        ]);
+
+        $data = [
+            'reference'=> $request->reference,
+            'number_plate'=> $request->number_plate,
+            'amount_paid'=> $request->amount_paid,
+            'transaction_date'=> $request->transaction_date,
+        ];
+        $response = json_decode(Http::post($url,$data)->body());
+        return response()->json($response);
+    }
 
     //Checkin
     public function checkin(){
@@ -295,7 +335,7 @@ class GSPDashboard extends Controller
 
     }
     public function postpayments(Request $request){
-        $url = config('base.main_URL').'/parking/waiver';
+        $url = config('base.main_URL').'/parking/payment';
 
         $formData = $request->all();
         $validator = Validator::make($formData,[

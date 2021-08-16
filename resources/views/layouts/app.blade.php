@@ -110,9 +110,9 @@
                                 <a href="{{ route('payments') }}">Payment</a>
                             </li>
 
-{{--                            <li>--}}
-{{--                                <a href="{{ route('checkin-postpay') }}">Post Pay</a>--}}
-{{--                            </li>--}}
+                            <li>
+                                <a href="{{ route('checkin-postpay') }}">Post Pay</a>
+                            </li>
 
 
                         </ul>

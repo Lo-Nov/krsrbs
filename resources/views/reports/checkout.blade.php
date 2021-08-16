@@ -47,16 +47,14 @@
                                     <tr>
                                         <th>Plate No.</th>
                                         <th>Drv Name</th>
-                                        <th>Drv Id</th>
                                         <th>Drv Number</th>
-                                        <th>Occupants</th>
-                                        <th>Destination</th>
-                                        <th>Slot</th>
-                                        <th>Amount Due</th>
+                                        <th>created_at</th>
+                                        <th>Total Amount</th>
+                                        <th>Amount Paid</th>
                                         <th>Duration</th>
-                                        <th>Slot</th>
+                                        <th>Checkout</th>
                                         <th>Attendant Name</th>
-                                        <th>Attendant Id</th>
+
                                     </tr>
                                     </thead>
 
@@ -66,16 +64,14 @@
                                         <tr>
                                             <td>{{ $item->number_plate }}</td>
                                             <td>{{ $item->driver_name }}</td>
-                                            <td>{{ $item->driver_id }}</td>
                                             <td>{{ $item->driver_phone_number }}</td>
-                                            <td>{{ $item->number_of_occupants }}</td>
-                                            <td>{{ $item->destination }}</td>
-                                            <td>{{ $item->slot }}</td>
-                                            <td>{{ number_format($item->amount_due,2) }}</td>
+                                            <td>{{ $item->created_at }}</td>
+                                            <td>{{ number_format($item->total_amount,2) }}</td>
+                                            <td>{{ number_format($item->amount_paid,2) }}</td>
                                             <td>{{ $item->duration }}</td>
-                                            <td>{{ $item->slot }}</td>
+                                            <td>{{ $item->checkout_time }}</td>
                                             <td>{{ $item->attendant_name }}</td>
-                                            <td>{{ $item->attendant_id }}</td>
+
                                         </tr>
                                     @endforeach
                                     </tbody>

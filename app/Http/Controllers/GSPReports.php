@@ -75,26 +75,5 @@ class GSPReports extends Controller
 
         return view('reports.waivers')->with($this->data);
     }
-    public function checkinpostpay(){
-        if (Session::get('is_login') != 1) {
-            Session::put('url', url()->current());
-            return redirect()->route('login');
-        }
-        $url = config('base.main_URL').'/parking/reporting/checkins';
-
-        $dt = Carbon::now();
-        $dt->toDateString();
-
-        $data=[
-            'start_date'=> "",
-            'end_date'=> ""
-        ];
-
-        $this->data['checkins'] = json_decode(Http::post($url,$data)->body());
-
-        //dd($this->data);
-
-        return view('payments.checkin-post')->with($this->data);
-    }
 
 }

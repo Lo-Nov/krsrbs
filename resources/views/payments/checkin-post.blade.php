@@ -42,7 +42,7 @@
                         </ul> <!-- end nav-->
                         <div class="tab-content">
                             <div class="tab-pane show active" id="buttons-table-preview">
-                                <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100" id="data-table">
+                                <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
                                     <thead>
                                     <tr>
                                         <th>Plate No.</th>
@@ -52,8 +52,7 @@
                                         <th>Destination</th>
                                         <th>Slot</th>
                                         <th>Amount Due</th>
-                                        <th>Duration</th>
-                                        <th>Slot</th>
+                                        <th>Date</th>
                                         <th>Attendant Name</th>
                                         <th>Action</th>
                                     </tr>
@@ -70,8 +69,7 @@
                                             <td>{{ $item->destination }}</td>
                                             <td>{{ $item->slot }}</td>
                                             <td>{{ number_format($item->amount_due,2) }}</td>
-                                            <td>{{ $item->duration }}</td>
-                                            <td>{{ $item->slot }}</td>
+                                            <td>{{ $item->created_at }}</td>
                                             <td>{{ $item->attendant_name }}</td>
                                             @if($item->amount_due > 0 )
                                                 <td>
@@ -79,7 +77,7 @@
                                                 </td>
 
                                             @else
-                                                <td>Paid</td>
+                                                <td><span class="badge badge-success-lighten">Fully Paid</span></td>
                                             @endif
 
                                         </tr>
@@ -91,38 +89,47 @@
                                     <div class="modal-dialog modal-dialog-centered modal-lg">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h4 class="modal-title" id="NewTaskModalLabel">Create New Charge</h4>
+                                                <h4 class="modal-title" id="NewTaskModalLabel">Post Payment</h4>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
 
                                                 <form class="p-2">
                                                     <div class="row">
-                                                        <div class="col-md-12">
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label for="task-title" class="form-label">Refence Number</label>
+                                                                <input type="text" class="form-control form-control-light" id="reference" placeholder="Enter charge type">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
                                                             <div class="mb-3">
                                                                 <label for="task-title" class="form-label">Number Plate</label>
-                                                                <input type="text" class="form-control form-control-light the-id0" id="charge_type" placeholder="Enter charge type">
+                                                                <input type="text" class="form-control form-control-light the-id0" id="number_plate" readonly>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label for="task-title" class="form-label">Amount Paid</label>
+                                                                <input type="text" class="form-control form-control-light the-id6" id="amount_paid" placeholder="Enter amount_paid" readonly>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label for="task-title" class="form-label">Transaction Date</label>
+                                                                <input type="datetime-local" value="{{Carbon\Carbon::now()->format('Y-m-d')."T".Carbon\Carbon::now()->format('H:i')}}" class="form-control form-control-light" id="transaction_date" readonly>
                                                             </div>
                                                         </div>
                                                     </div>
 
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Category</label>
-                                                        <select class="form-select form-control-light" id="category_id">
-                                                            <option>Select Project</option>
 
-                                                        </select>
-                                                    </div>
-
-                                                    <div class="mb-3">
-                                                        <label for="task-title" class="form-label">Charge Amount</label>
-                                                        <input type="text" class="form-control form-control-light" id="charge_amount" placeholder="Enter charge_amount">
-                                                    </div>
 
 
                                                     <div class="text-end">
                                                         <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
-                                                        <button type="button" class="btn btn-warning addnewcharge">Create</button>
+                                                        <button type="button" class="btn btn-warning postpayment">Create</button>
                                                         <span>
                                                             <div class="d-none" id="loader14">
                                                              <img class="the-loader-of" src="{{ asset('loader/loader2.gif') }}" alt="" />
@@ -156,8 +163,10 @@
     <script type="text/javascript">
         $(document).ready(function(){
             // code to read selected table row cell data (values).
-            $("#data-table").on('click','.btnSelect',function(){
-                 alert("clicked");
+            $("#datatable-buttons").on('click','.btnSelect',function(){
+
+
+                // alert("clicked");
                 // get the current row
                 var currentRow = $(this).closest("tr");
 
@@ -169,6 +178,7 @@
                 var col8=$(this).parent().siblings().eq(8).text(); // get current row 3rd TD
                 var col9=$(this).parent().siblings().eq(9).text(); // get current row 3rd TD
                 var col10=$(this).parent().siblings().eq(10).text(); // get current row 3rd TD
+                var col6=$(this).parent().siblings().eq(6).text(); // get current row 3rd TD
 
 
                 var results=$(this).parent().siblings('.test-results').text();
@@ -176,13 +186,13 @@
                 var lab_val=0;
 
 
-                //alert(col1);
+                // alert(col1);
 
                 $("#get-id textarea").val(results);
                 $("#get-id #labId").val(lab_val);
 
                 $('#get-id .modal-body .the-id0').val(col1);
-                $('#get-id .modal-body .the-id1').val(col2);
+                $('#get-id .modal-body .the-id6').val(col6);
                 $('#get-id .modal-body .the-id2').val(col3);
                 $('#inspectionCodeText').text($('#inspectionCode').val());
 
@@ -198,29 +208,31 @@
 
 
     <script type="text/javascript">
-        $('.addnewcharge').click(function(e){
+        $('.postpayment').click(function(e){
 
             e.preventDefault();
 
-            var charge_type = $('#charge_type').val();
-            var category_id = $('#category_id').val();
-            var charge_amount = $('#charge_amount').val();
+            var reference = $('#reference').val();
+            var number_plate = $('#number_plate').val();
+            var amount_paid = $('#amount_paid').val();
+            var transaction_date = $('#transaction_date').val();
 
             $('#loader14').removeClass('d-none');
             $.ajax({
-                url: "{{url('/add-new-charge')}}",
+                url: "{{url('/pushpayment')}}",
                 type : "POST",
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                 data:{
-                    category_id:category_id,
-                    charge_type:charge_type,
-                    charge_amount:charge_amount,
+                    reference:reference,
+                    number_plate:number_plate,
+                    amount_paid:amount_paid,
+                    transaction_date:transaction_date,
                 },
 
                 success:function(data){
                     //console.log(data.message);
                     $('#loader14').addClass('d-none');
-                    $('#add-new-task-modal').modal('hide');
+                    $('#get-id').modal('hide');
 
 
                     Swal.fire({
