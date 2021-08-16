@@ -8,9 +8,9 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="header-title">Check Out Vehicle</h4>
+                        <h4 class="header-title">Post Payments</h4>
                         <p class="text-muted font-14">
-                            Use the platform to check out vehicle from the system
+                            Use the platform to post payments
                         </p>
 
                         <ul class="nav nav-tabs nav-bordered mb-3">
@@ -26,15 +26,36 @@
                                     {!! session('message.content') !!}
                                 </div>
                             @endif
-                            <form action="{{ route('check-out') }}" method="post">@csrf
+                            <form action="{{ route('payments') }}" method="post">@csrf
                                 <div class="tab-pane show active" id="typeahead-preview">
+
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Payment Reference Number</label>
+                                                <input type="text" class="form-control" data-provide="typeahead" name="reference" placeholder=" Enter reference number">
+                                            </div>
+                                        </div> <!-- end col -->
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Number Plate</label>
+                                                <input type="text" class="form-control" data-provide="typeahead" name="number_plate" placeholder="Enter number plate">
+                                            </div>
+                                        </div> <!-- end col -->
+                                    </div>
 
 
                                     <div class="row">
-                                        <div class="col-lg-12">
+                                        <div class="col-lg-6">
                                             <div class="mb-3">
-                                                <label class="form-label">Number Plate</label>
-                                                <input type="text" class="form-control" data-provide="typeahead" name="number_plate" placeholder=" Enter number plate">
+                                                <label class="form-label">Amount Paid</label>
+                                                <input type="text" class="form-control" data-provide="typeahead" name="amount_paid" placeholder=" Enter amount paid">
+                                            </div>
+                                        </div> <!-- end col -->
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Transaction Date</label>
+                                                <input type="datetime-local" class="form-control" data-provide="typeahead" name="transaction_date" placeholder="Time">
                                             </div>
                                         </div> <!-- end col -->
                                     </div>
@@ -43,7 +64,7 @@
                                     <div class="row ">
                                         <div class="col-lg-6">
                                             <div class="mb-0 float-right">
-                                                <button type="submit" class="btn btn-warning">Check Out</button>
+                                                <button type="submit" class="btn btn-warning">Post Payments</button>
                                             </div>
                                         </div> <!-- end col -->
                                     </div>

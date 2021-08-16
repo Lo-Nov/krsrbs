@@ -49,4 +49,9 @@ Route::post('/check-status', [App\Http\Controllers\GSPDashboard::class, 'chackst
 Route::get('/waiver', [App\Http\Controllers\GSPDashboard::class, 'waiver'])->name('waiver');
 Route::post('/waiver', [App\Http\Controllers\GSPDashboard::class, 'waiverpenalties'])->name('waiver');
 
+//Payments
+
+Route::get('/payments', [App\Http\Controllers\GSPDashboard::class, 'payments'])->name('payments');
+Route::post('/payments', [App\Http\Controllers\GSPDashboard::class, 'postpayments'])->name('payments');
+
 

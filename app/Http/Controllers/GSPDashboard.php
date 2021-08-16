@@ -10,16 +10,13 @@ use Illuminate\Support\Facades\Validator;
 
 class GSPDashboard extends Controller
 {
-    public function __construct()
-    {
+
+
+    public function dashboard(){
         if (Session::get('is_login') != 1) {
             Session::put('url', url()->current());
             return redirect()->route('login');
         }
-
-    }
-
-    public function dashboard(){
         $url = config('base.main_URL').'/parking/reporting/dashboard';
 
         $this->data['dashboard'] = json_decode(Http::get($url)->body());
@@ -56,6 +53,10 @@ class GSPDashboard extends Controller
 
     //Charges
     public function charges(){
+        if (Session::get('is_login') != 1) {
+            Session::put('url', url()->current());
+            return redirect()->route('login');
+        }
         $url = config('base.main_URL').'/parking/settings/charges';
 
         $this->data['charges'] = json_decode(Http::get($url)->body());
@@ -87,6 +88,10 @@ class GSPDashboard extends Controller
 
     //Checkin
     public function checkin(){
+        if (Session::get('is_login') != 1) {
+            Session::put('url', url()->current());
+            return redirect()->route('login');
+        }
         $url = config('base.main_URL').'/parking/settings/charges';
 
         $this->data['charges'] = json_decode(Http::get($url)->body());
@@ -138,6 +143,10 @@ class GSPDashboard extends Controller
 
     //Check out
     public function checkout(){
+        if (Session::get('is_login') != 1) {
+            Session::put('url', url()->current());
+            return redirect()->route('login');
+        }
         return view('checkout.checkout');
 
     }
@@ -175,6 +184,10 @@ class GSPDashboard extends Controller
 
     //Parking status
     public function parkingstatus(){
+        if (Session::get('is_login') != 1) {
+            Session::put('url', url()->current());
+            return redirect()->route('login');
+        }
         return view('status.status');
 
     }
@@ -212,9 +225,26 @@ class GSPDashboard extends Controller
 
     //waiver
     public function waiver(){
+        if (Session::get('is_login') != 1) {
+            Session::put('url', url()->current());
+            return redirect()->route('login');
+        }
         return view('waiver.waiver');
 
     }
+
+    //waiver
+    public function payments(){
+        if (Session::get('is_login') != 1) {
+            Session::put('url', url()->current());
+            return redirect()->route('login');
+        }
+        return view('payments.payments');
+
+    }
+
+
+
     public function waiverpenalties(Request $request){
         $url = config('base.main_URL').'/parking/waiver';
 
@@ -236,6 +266,43 @@ class GSPDashboard extends Controller
             'reference'=> $request->reference,
             'number_plate'=> $request->number_plate,
             'amount_waivered'=> $request->amount_waivered,
+            'transaction_date'=> $request->transaction_date,
+        ];
+        $response = json_decode(Http::post($url,$data)->body());
+
+        if($response->status == 200) {
+            $request->session()->flash('message.level', 'success');
+            $request->session()->flash('message.content', $response->message);
+            return redirect()->back()->withErrors($response->message);
+        }else{
+            $request->session()->flash('message.level', 'danger');
+            $request->session()->flash('message.content', $response->message);
+            return redirect()->back()->withErrors($response->message);
+        }
+
+
+    }
+    public function postpayments(Request $request){
+        $url = config('base.main_URL').'/parking/waiver';
+
+        $formData = $request->all();
+        $validator = Validator::make($formData,[
+            'reference'=>'required',
+            'number_plate'=>'required',
+            'amount_paid'=>'required',
+            'transaction_date'=>'required',
+        ]);
+
+        if ($validator->fails()) {
+            $request->session()->flash('message.level', 'danger');
+            $request->session()->flash('message.content', $validator->errors());
+            return Redirect::back()->withErrors($validator->errors());
+
+        }
+        $data = [
+            'reference'=> $request->reference,
+            'number_plate'=> $request->number_plate,
+            'amount_paid'=> $request->amount_paid,
             'transaction_date'=> $request->transaction_date,
         ];
         $response = json_decode(Http::post($url,$data)->body());

@@ -42,7 +42,7 @@
                             </div>
                         </div>
                         <div class="d-grid mb-0 text-center">
-                            <button class="btn btn-primary" type="submit"><i class="mdi mdi-login"></i> Log In </button>
+                            <button class="btn btn-warning" type="submit"><i class="mdi mdi-login"></i> Log In </button>
                         </div>
                         <!-- social-->
                         <div class="text-center mt-4 d-none">

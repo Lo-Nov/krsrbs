@@ -20,7 +20,7 @@
 
     <!-- third party css -->
     <link href="{{ asset('assets/css/vendor/dataTables.bootstrap5.css') }}" rel="stylesheet" type="text/css" />
-    <link href="assets/css/vendor/responsive.bootstrap5.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/vendor/responsive.bootstrap5.css') }}" rel="stylesheet" type="text/css" />
     <link href="assets/css/vendor/buttons.bootstrap5.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/vendor/select.bootstrap5.css" rel="stylesheet" type="text/css" />
     <!-- third party css end -->
@@ -36,17 +36,10 @@
 <div class="wrapper">
     <!-- ========== Left Sidebar Start ========== -->
     <div class="leftside-menu">
-
         <!-- LOGO -->
-        <a href="index.html" class="logo text-center logo-light">
-                    <span class="logo-lg">
-                        <img src="{{ asset('assets/images/logo.png') }}" alt="" height="16">
-                    </span>
-            <span class="logo-sm">
-                        <img src="{{ asset('assets/images/logo_sm.png') }}" alt="" height="16">
-                    </span>
+        <a href="{{ route('dashboard') }}" class="logo text-center logo-light">
+            <h3 class="logo-lg" style="color: #ffff; margin: revert; ">KRSRBS</h3>
         </a>
-
         <!-- LOGO -->
         <a href="index.html" class="logo text-center logo-dark">
                     <span class="logo-lg">
@@ -80,35 +73,6 @@
                 </li>
 
                 <li class="side-nav-title side-nav-item">Apps</li>
-
-                <li class="side-nav-item">
-                    <a data-bs-toggle="collapse" href="#sidebarTasks" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
-                        <i class="uil-clipboard-alt"></i>
-                        <span>Category </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarTasks">
-                        <ul class="side-nav-second-level">
-                            <li>
-                                <a href="{{ route('categories') }}">All Category</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="side-nav-item">
-                    <a data-bs-toggle="collapse" href="#sidebarIcons" aria-expanded="false" aria-controls="sidebarIcons" class="side-nav-link">
-                        <i class="uil-user"></i>
-                        <span> Charges </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarIcons">
-                        <ul class="side-nav-second-level">
-                            <li>
-                                <a href="{{ route('charges') }}">Charges</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
                 <li class="side-nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarExtendedUI" aria-expanded="false" aria-controls="sidebarExtendedUI" class="side-nav-link">
                         <i class="uil-package"></i>
@@ -128,19 +92,43 @@
                 </li>
 
                 <li class="side-nav-item">
-                    <a href="{{ route('parking-status') }}" class="side-nav-link">
-                        <i class="uil-globe"></i>
-                        <span class="badge bg-success text-light float-end">New</span>
-                        <span> Parking Status </span>
+                    <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
+                        <i class="uil-envelope"></i>
+                        <span> Operations </span>
+                        <span class="menu-arrow"></span>
                     </a>
+                    <div class="collapse" id="sidebarEmail">
+                        <ul class="side-nav-second-level">
+                            <li>
+                                <a href="{{ route('waiver') }}">Waiver</a>
+
+                            </li>
+                            <li>
+                                <a href="{{ route('parking-status') }}">Status</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('payments') }}">Payment</a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
 
                 <li class="side-nav-item">
-                    <a href="{{ route('waiver') }}" class="side-nav-link">
-                        <i class="uil-globe"></i>
-                        <span class="badge bg-secondary text-light float-end">New</span>
-                        <span> Waiver </span>
+                    <a data-bs-toggle="collapse" href="#sidebarTasks" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
+                        <i class="uil-clipboard-alt"></i>
+                        <span>Setup </span>
+                        <span class="menu-arrow"></span>
                     </a>
+                    <div class="collapse" id="sidebarTasks">
+                        <ul class="side-nav-second-level">
+                            <li>
+                                <a href="{{ route('categories') }}">Categories</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('charges') }}">Charges</a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
 
                 <li class="side-nav-item">
@@ -432,7 +420,7 @@
                         <div class="input-group">
                             <input type="text" class="form-control dropdown-toggle"  placeholder="Search..." id="top-search">
                             <span class="mdi mdi-magnify search-icon"></span>
-                            <button class="input-group-text btn-primary" type="submit">Search</button>
+                            <button class="input-group-text btn-warning" type="submit">Search</button>
                         </div>
                     </form>
 

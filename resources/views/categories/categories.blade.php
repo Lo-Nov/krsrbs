@@ -87,7 +87,7 @@
 
                                                     <div class="text-end">
                                                         <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
-                                                        <button type="button" class="btn btn-primary addnewcategory">Create</button>
+                                                        <button type="button" class="btn btn-warning addnewcategory">Create</button>
                                                         <span>
                                                             <div class="d-none" id="loader14">
                                                              <img class="the-loader-of" src="{{ asset('loader/loader2.gif') }}" alt="" />

@@ -66,7 +66,7 @@
                                 <div class="row ">
                                     <div class="col-lg-6">
                                         <div class="mb-0 float-right">
-                                            <button type="submit" class="btn btn-primary">Check In</button>
+                                            <button type="submit" class="btn btn-warning">Check In</button>
                                         </div>
                                     </div> <!-- end col -->
                                 </div>
