@@ -75,7 +75,7 @@
 
 
         <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-6">
                 <div class="card">
                     <div class="card-body">
                         <div class="dropdown float-end">
@@ -93,42 +93,21 @@
                                 <a href="javascript:void(0);" class="dropdown-item">Settings</a>
                             </div>
                         </div>
-                        <h4 class="header-title mb-4">Charge Statistics</h4>
+                        <h4 class="header-title mb-4">Charge Type Statistics</h4>
 
-                        <div class="my-4 chartjs-chart" style="height: 202px;">
-                            <canvas id="project-status-chart" data-colors="#0acf97,#727cf5,#fa5c7c"></canvas>
+                        <div class="card user_statistics dark-card">
+                            <div class="card-body" style="background: #fff; border-radius: 10px">
+                                <div id="transaction-data" style="height: 338px"></div>
+                            </div>
                         </div>
 
-                        <div class="row text-center mt-2 py-2">
-                            <div class="col-4">
-                                <i class="mdi mdi-trending-up text-success mt-3 h3"></i>
-                                <h3 class="fw-normal">
-                                    <span>64%</span>
-                                </h3>
-                                <p class="text-muted mb-0">Daily</p>
-                            </div>
-                            <div class="col-4">
-                                <i class="mdi mdi-trending-down text-primary mt-3 h3"></i>
-                                <h3 class="fw-normal">
-                                    <span>26%</span>
-                                </h3>
-                                <p class="text-muted mb-0"> Penalties</p>
-                            </div>
-                            <div class="col-4">
-                                <i class="mdi mdi-trending-down text-danger mt-3 h3"></i>
-                                <h3 class="fw-normal">
-                                    <span>10%</span>
-                                </h3>
-                                <p class="text-muted mb-0"> Towing</p>
-                            </div>
-                        </div>
                         <!-- end row-->
 
                     </div> <!-- end card body-->
                 </div> <!-- end card -->
             </div><!-- end col-->
 
-            <div class="col-lg-8">
+            <div class="col-lg-6">
                 <div class="card">
                     <div class="card-body">
                         <div class="dropdown float-end">
@@ -148,14 +127,15 @@
                         </div>
                         <h4 class="header-title mb-3">Revenue by Category</h4>
 
-                        <p><b>107</b> Tasks completed out of 195</p>
+                        <p><b> <script>document.write(new Date().getFullYear())</script></b> Revenue collected per the categories</p>
 
                         <div class="table-responsive">
                             <table class="table table-centered table-nowrap table-hover mb-0">
                                 <tbody>
+                                @foreach($dashboard->data->category as $key=>$item)
                                 <tr>
                                     <td>
-                                        <h5 class="font-14 my-1"><a href="javascript:void(0);" class="text-body">Saloon/Matatu/small cars</a></h5>
+                                        <h5 class="font-14 my-1"><a href="javascript:void(0);" class="text-body">{{ $item->name }}</a></h5>
                                         <span class="text-muted font-13">Due in 3 days</span>
                                     </td>
                                     <td>
@@ -164,61 +144,18 @@
                                     </td>
                                     <td>
                                         <span class="text-muted font-13">Assigned to</span>
-                                        <h5 class="font-14 mt-1 fw-normal">Logan R. Cohn</h5>
+                                        <h5 class="font-14 mt-1 fw-normal">Good Shed</h5>
                                     </td>
                                     <td>
-                                        <span class="text-muted font-13">Total time spend</span>
-                                        <h5 class="font-14 mt-1 fw-normal">3h 20min</h5>
+                                        <span class="text-muted font-13">Total </span>
+                                        <h5 class="font-14 mt-1 fw-normal">{{ number_format($item->total,2) }}</h5>
                                     </td>
                                     <td class="table-action" style="width: 90px;">
                                         <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
                                         <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <h5 class="font-14 my-1"><a href="javascript:void(0);" class="text-body">Minibus</a></h5>
-                                        <span class="text-muted font-13">Due in 27 days</span>
-                                    </td>
-                                    <td>
-                                        <span class="text-muted font-13">Status</span> <br/>
-                                        <span class="badge badge-danger-lighten">Outdated</span>
-                                    </td>
-                                    <td>
-                                        <span class="text-muted font-13">Assigned to</span>
-                                        <h5 class="font-14 mt-1 fw-normal">Jerry F. Powell</h5>
-                                    </td>
-                                    <td>
-                                        <span class="text-muted font-13">Total time spend</span>
-                                        <h5 class="font-14 mt-1 fw-normal">12h 21min</h5>
-                                    </td>
-                                    <td class="table-action" style="width: 90px;">
-                                        <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                        <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <h5 class="font-14 my-1"><a href="javascript:void(0);" class="text-body">Trucks and lorries</a></h5>
-                                        <span class="text-muted font-13">Due in 7 days</span>
-                                    </td>
-                                    <td>
-                                        <span class="text-muted font-13">Status</span> <br/>
-                                        <span class="badge badge-success-lighten">Completed</span>
-                                    </td>
-                                    <td>
-                                        <span class="text-muted font-13">Assigned to</span>
-                                        <h5 class="font-14 mt-1 fw-normal">Scot M. Smith</h5>
-                                    </td>
-                                    <td>
-                                        <span class="text-muted font-13">Total time spend</span>
-                                        <h5 class="font-14 mt-1 fw-normal">78h 05min</h5>
-                                    </td>
-                                    <td class="table-action" style="width: 90px;">
-                                        <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                        <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                    </td>
-                                </tr>
+                                @endforeach
 
                                 </tbody>
                             </table>
@@ -231,4 +168,110 @@
         <!-- end row-->
     </div>
     <!-- container -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+    @php
+        $jsonResponse = collect($dashboard->data->charge_type);
+        $charge_names = $jsonResponse->pluck('name');
+        $charge_total = $jsonResponse->pluck('total');
+    @endphp
+
+    <script>
+        var options = {
+            series: [{
+                name: 'Businesses by Sub County',
+                data: [
+                    @foreach($charge_total as $num)
+                        {{$num}},
+                    @endforeach
+                ]
+            }],
+            chart: {
+                height: 350,
+                type: 'donut',
+            },
+            plotOptions: {
+                bar: {
+                    borderRadius: 10,
+                    dataLabels: {
+                        position: 'top', // top, center, bottom
+                    },
+                }
+            },
+            dataLabels: {
+                enabled: true,
+                formatter: function (val) {
+                    return val + " KES";
+                },
+                offsetY: -20,
+                style: {
+                    fontSize: '12px',
+                    colors: ["#304758"]
+                }
+            },
+
+            xaxis: {
+                categories: [
+                    @foreach($charge_names as $charge)
+                        "{{$charge}}",
+                    @endforeach
+                ],
+                position: 'top',
+                axisBorder: {
+                    show: false
+                },
+                axisTicks: {
+                    show: false
+                },
+                crosshairs: {
+                    fill: {
+                        type: 'gradient',
+                        gradient: {
+                            colorFrom: '#D8E3F0',
+                            colorTo: '#4CAF50',
+                            stops: [0, 100],
+                            opacityFrom: 0.4,
+                            opacityTo: 0.5,
+                        }
+                    }
+                },
+                tooltip: {
+                    enabled: true,
+                }
+            },
+            yaxis: {
+                axisBorder: {
+                    show: false
+                },
+                axisTicks: {
+                    show: false,
+                },
+                labels: {
+                    show: false,
+                    formatter: function (val) {
+                        return val + " kes";
+                    }
+                }
+            },
+            colors: ["#4CAF50"],
+            title: {
+                // text: 'Revenue by charge type',
+                floating: true,
+                offsetY: 330,
+                align: 'center',
+                style: {
+                    color: '#000'
+                }
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#transaction-data"), options);
+        chart.render();
+
+    </script>
+
+
+
 @endsection

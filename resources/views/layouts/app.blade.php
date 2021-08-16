@@ -21,8 +21,8 @@
     <!-- third party css -->
     <link href="{{ asset('assets/css/vendor/dataTables.bootstrap5.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/vendor/responsive.bootstrap5.css') }}" rel="stylesheet" type="text/css" />
-    <link href="assets/css/vendor/buttons.bootstrap5.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/vendor/select.bootstrap5.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/vendor/buttons.bootstrap5.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/vendor/select.bootstrap5.css') }}" rel="stylesheet" type="text/css" />
     <!-- third party css end -->
 
     # Tag
@@ -109,6 +109,12 @@
                             <li>
                                 <a href="{{ route('payments') }}">Payment</a>
                             </li>
+
+{{--                            <li>--}}
+{{--                                <a href="{{ route('checkin-postpay') }}">Post Pay</a>--}}
+{{--                            </li>--}}
+
+
                         </ul>
                     </div>
                 </li>
@@ -140,13 +146,13 @@
                     <div class="collapse" id="sidebarTables">
                         <ul class="side-nav-second-level">
                             <li>
-                                <a href="#">Checked In</a>
+                                <a href="{{ route('checkin') }}">Checked In</a>
                             </li>
                             <li>
-                                <a href="#">Checked Out</a>
+                                <a href="{{ route('checkout') }}">Checked Out</a>
                             </li>
                             <li>
-                                <a href="#">Waivered</a>
+                                <a href="{{ route('waivers') }}">Waivered</a>
                             </li>
                         </ul>
                     </div>
@@ -490,7 +496,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-6">
-                        <script>document.write(new Date().getFullYear())</script> © Hyper - Coderthemes.com
+                        <script>document.write(new Date().getFullYear())</script> © Powered By - National Bank of Kenya
                     </div>
                     <div class="col-md-6">
                         <div class="text-md-end footer-links d-none d-md-block">
@@ -621,23 +627,20 @@
 <!-- demo js -->
 <script src="{{ asset('assets/js/ui/component.dragula.js') }}"></script>
 
-
 <!-- demo app -->
 <script src="{{ asset('assets/js/pages/demo.dashboard-projects.js') }}"></script>
 <!-- end demo js-->
-
-
-<script src="assets/js/vendor/jquery.dataTables.min.js"></script>
-<script src="assets/js/vendor/dataTables.bootstrap5.js"></script>
-<script src="assets/js/vendor/dataTables.responsive.min.js"></script>
-<script src="assets/js/vendor/responsive.bootstrap5.min.js"></script>
-<script src="assets/js/vendor/dataTables.buttons.min.js"></script>
-<script src="assets/js/vendor/buttons.bootstrap5.min.js"></script>
-<script src="assets/js/vendor/buttons.html5.min.js"></script>
-<script src="assets/js/vendor/buttons.flash.min.js"></script>
-<script src="assets/js/vendor/buttons.print.min.js"></script>
-<script src="assets/js/vendor/dataTables.keyTable.min.js"></script>
-<script src="assets/js/vendor/dataTables.select.min.js"></script>
+<script src="{{ asset('assets/js/vendor/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('assets/js/vendor/dataTables.bootstrap5.js') }}"></script>
+<script src="{{ asset('assets/js/vendor/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('assets/js/vendor/responsive.bootstrap5.min.js') }}"></script>
+<script src="{{ asset('assets/js/vendor/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('assets/js/vendor/buttons.bootstrap5.min.js') }}"></script>
+<script src="{{ asset('assets/js/vendor/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('assets/js/vendor/buttons.flash.min.js') }}"></script>
+<script src="{{ asset('assets/js/vendor/buttons.print.min.js') }}"></script>
+<script src="{{ asset('assets/js/vendor/dataTables.keyTable.min.js') }}"></script>
+<script src="{{ asset('assets/js/vendor/dataTables.select.min.js') }}"></script>
 <!-- third party js ends -->
 
 <!-- demo app -->

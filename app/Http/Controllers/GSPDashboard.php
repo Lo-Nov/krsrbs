@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
@@ -19,7 +20,18 @@ class GSPDashboard extends Controller
         }
         $url = config('base.main_URL').'/parking/reporting/dashboard';
 
-        $this->data['dashboard'] = json_decode(Http::get($url)->body());
+        $dt = Carbon::now();
+        $dt->toDateString();
+
+        $data=[
+            'start_date'=> "",
+            'end_date'=> ""
+        ];
+
+
+        $this->data['dashboard'] = json_decode(Http::post($url,$data)->body());
+
+        //dd($this->data);
 
         return view('home')->with($this->data);
     }

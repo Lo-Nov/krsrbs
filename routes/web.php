@@ -53,5 +53,10 @@ Route::post('/waiver', [App\Http\Controllers\GSPDashboard::class, 'waiverpenalti
 
 Route::get('/payments', [App\Http\Controllers\GSPDashboard::class, 'payments'])->name('payments');
 Route::post('/payments', [App\Http\Controllers\GSPDashboard::class, 'postpayments'])->name('payments');
+Route::get('/checkin-postpay', [App\Http\Controllers\GSPReports::class, 'checkinpostpay'])->name('checkin-postpay');
 
 
+//GSPReports
+Route::get('/checkin', [App\Http\Controllers\GSPReports::class, 'checkin'])->name('checkin');
+Route::get('/checkout', [App\Http\Controllers\GSPReports::class, 'checkout'])->name('checkout');
+Route::get('/waivers', [App\Http\Controllers\GSPReports::class, 'waivers'])->name('waivers');
