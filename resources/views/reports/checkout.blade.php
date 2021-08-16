@@ -22,8 +22,6 @@
         </div>
         <!-- end page title -->
 
-
-
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -54,10 +52,8 @@
                                         <th>Duration</th>
                                         <th>Checkout</th>
                                         <th>Attendant Name</th>
-
                                     </tr>
                                     </thead>
-
 
                                     <tbody>
                                     @foreach($checkouts->data as $key=>$item)

@@ -56,20 +56,11 @@
             <ul class="side-nav">
 
                 <li class="side-nav-title side-nav-item">Navigation</li>
-
                 <li class="side-nav-item">
-                    <a data-bs-toggle="collapse" href="#sidebarDashboards" aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link">
-                        <i class="uil-home-alt"></i>
-                        <span class="badge bg-success float-end">4</span>
-                        <span> Dashboards </span>
+                    <a href="{{ route('dashboard') }}" class="side-nav-link">
+                        <i class="uil-dashboard"></i>
+                        <span> Dashboard </span>
                     </a>
-                    <div class="collapse" id="sidebarDashboards">
-                        <ul class="side-nav-second-level">
-                            <li>
-                                <a href="{{ route('dashboard') }}">Home</a>
-                            </li>
-                        </ul>
-                    </div>
                 </li>
 
                 <li class="side-nav-title side-nav-item">Apps</li>
@@ -156,6 +147,19 @@
                             </li>
                         </ul>
                     </div>
+                </li>
+
+                <li class="side-nav-item">
+                    <a class="side-nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();" data-toggle-fullscreen="">
+                        <i class="uil-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </a>
+                    <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+
+
+
                 </li>
 
 
@@ -359,11 +363,11 @@
                         </div>
                     </li>
 
-                    <li class="notification-list">
+                    <!--<li class="notification-list">
                         <a class="nav-link end-bar-toggle" href="javascript: void(0);">
                             <i class="dripicons-gear noti-icon"></i>
                         </a>
-                    </li>
+                    </li>-->
 
                     <li class="dropdown notification-list">
                         <a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false"

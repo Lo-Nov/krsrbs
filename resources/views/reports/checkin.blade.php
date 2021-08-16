@@ -51,12 +51,11 @@
                                         <th>Drv Number</th>
                                         <th>Occupants</th>
                                         <th>Destination</th>
-                                        <th>Slot</th>
                                         <th>Amount Due</th>
                                         <th>Duration</th>
-                                        <th>Slot</th>
                                         <th>Attendant Name</th>
-                                        <th>Attendant Id</th>
+                                        <th>Created At</th>
+
                                     </tr>
                                     </thead>
 
@@ -70,12 +69,10 @@
                                             <td>{{ $item->driver_phone_number }}</td>
                                             <td>{{ $item->number_of_occupants }}</td>
                                             <td>{{ $item->destination }}</td>
-                                            <td>{{ $item->slot }}</td>
                                             <td>{{ number_format($item->amount_due,2) }}</td>
                                             <td>{{ $item->duration }}</td>
-                                            <td>{{ $item->slot }}</td>
                                             <td>{{ $item->attendant_name }}</td>
-                                            <td>{{ $item->attendant_id }}</td>
+                                            <td>{{ $item->created_at }}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>
