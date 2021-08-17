@@ -62,8 +62,8 @@
                                             <td>{{ $item->driver_name }}</td>
                                             <td>{{ $item->driver_phone_number }}</td>
                                             <td>  {{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y') }}</td>
-                                            <td>{{ number_format($item->total_amount,2) }}</td>
-                                            <td>{{ number_format($item->amount_paid,2) }}</td>
+                                            <td>KES  {{ number_format($item->total_amount,2) }}</td>
+                                            <td> KES {{ number_format($item->amount_paid,2) }}</td>
                                             <td>{{ $item->duration }}</td>
                                             <td>  {{ \Carbon\Carbon::parse($item->checkout_time)->format('d/m/Y') }}</td>
                                             <td>{{ $item->attendant_name }}</td>
