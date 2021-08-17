@@ -196,7 +196,7 @@ class GSPDashboard extends Controller
         ];
 
         $response = json_decode(Http::post($url,$data)->body());
-        dd($response);
+        //dd($response);
         return response()->json($response);
     }
 
