@@ -85,6 +85,7 @@
                                                 <div class="mb-3">
                                                     <label class="form-label">User Role</label>
                                                     <select class="form-select form-control-light" name="roles">
+                                                        <option>Select User Role</option>
                                                         <option value="PARKINGADMIN">Admin</option>
                                                         <option value="REPORTS">Reports</option>
                                                         <option value="OFFSTREET">Attendant</option>

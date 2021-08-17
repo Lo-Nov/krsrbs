@@ -262,7 +262,20 @@ class GSPDashboard extends Controller
             Session::put('url', url()->current());
             return redirect()->route('login');
         }
-        return view('checkout.checkout');
+        $url = config('base.main_URL').'/parking/reporting/checkins';
+
+        $dt = Carbon::now();
+        $dt->toDateString();
+
+        $data=[
+            'start_date'=> "",
+            'end_date'=> ""
+        ];
+
+        $this->data['checkins'] = json_decode(Http::post($url,$data)->body());
+
+        //dd($this->data);
+        return view('checkout.checkout')->with($this->data);
 
     }
     public function toagari(Request $request){
@@ -284,17 +297,21 @@ class GSPDashboard extends Controller
             'attendant_name'=>Session::get('user_full_name'),
             'attendant_id'=>Session::get('user_id')
         ];
-        $response = json_decode(Http::post($url,$data)->body());
 
-        if($response->status == 200) {
-            $request->session()->flash('message.level', 'success');
-            $request->session()->flash('message.content', $response->message);
-            return redirect()->back()->withErrors($response->message);
-        }else{
-            $request->session()->flash('message.level', 'danger');
-            $request->session()->flash('message.content', $response->message);
-            return redirect()->back()->withErrors($response->message);
-        }
+        $response = json_decode(Http::post($url,$data)->body());
+        return response()->json($response);
+//
+//
+//
+//        if($response->status == 200) {
+//            $request->session()->flash('message.level', 'success');
+//            $request->session()->flash('message.content', $response->message);
+//            return redirect()->back()->withErrors($response->message);
+//        }else{
+//            $request->session()->flash('message.level', 'danger');
+//            $request->session()->flash('message.content', $response->message);
+//            return redirect()->back()->withErrors($response->message);
+//        }
 
 
     }
