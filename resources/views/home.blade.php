@@ -161,7 +161,7 @@
     <script>
         var options = {
             series: [{
-                name: 'Businesses by Sub County',
+                name: 'KES',
                 data: [
                     @foreach($category_total as $num)
                         {{$num}},
@@ -170,7 +170,7 @@
             }],
             chart: {
                 height: 350,
-                type: 'donut',
+                type: 'line',
             },
             plotOptions: {
                 bar: {
@@ -231,7 +231,7 @@
                 labels: {
                     show: false,
                     formatter: function (val) {
-                        return val + " kes";
+                        return val + "";
                     }
                 }
             },
@@ -254,7 +254,7 @@
     <script>
         var options = {
             series: [{
-                name: 'Businesses by Sub County',
+                name: 'Charge',
                 data: [
                     @foreach($charge_total as $num)
                         {{$num}},
@@ -263,7 +263,7 @@
             }],
             chart: {
                 height: 350,
-                type: 'donut',
+                type: 'line',
             },
             plotOptions: {
                 bar: {
@@ -324,11 +324,11 @@
                 labels: {
                     show: false,
                     formatter: function (val) {
-                        return val + " kes";
+                        return val + "";
                     }
                 }
             },
-            colors: ["#4CAF50"],
+            colors: ["#532350"],
             title: {
                 // text: 'Revenue by charge type',
                 floating: true,

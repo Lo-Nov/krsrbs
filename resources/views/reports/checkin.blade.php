@@ -72,7 +72,8 @@
                                             <td>{{ number_format($item->amount_due,2) }}</td>
                                             <td>{{ $item->duration }}</td>
                                             <td>{{ $item->attendant_name }}</td>
-                                            <td>{{ $item->created_at }}</td>
+                                            <td>  {{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y') }}</td>
+
                                         </tr>
                                     @endforeach
                                     </tbody>

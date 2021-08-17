@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Validator;
 class GSPDashboard extends Controller
 {
 
-
     public function addusers(Request $request){
         $url = config('base.auth_URL').'/RevenueSure/api/Account/Register';
 

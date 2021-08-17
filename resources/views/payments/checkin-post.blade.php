@@ -69,17 +69,15 @@
                                             <td>{{ $item->destination }}</td>
                                             <td>{{ $item->slot }}</td>
                                             <td>{{ number_format($item->amount_due,2) }}</td>
-                                            <td>{{ $item->created_at }}</td>
+                                            <td>  {{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y') }}</td>
                                             <td>{{ $item->attendant_name }}</td>
                                             @if($item->amount_due > 0 )
-                                                <td>
-                                                    <button class="btn btn-primary btnSelect" data-bs-toggle="modal" data-bs-target="#get-id"> <i class="zmdi zmdi-check-square"></i> Pay</button>
-                                                </td>
-
+                                            <td>
+                                                <button class="btn btn-primary btnSelect" data-bs-toggle="modal" data-bs-target="#get-id"> <i class="zmdi zmdi-check-square"></i> Pay</button>
+                                            </td>
                                             @else
                                                 <td><span class="badge badge-success-lighten">Fully Paid</span></td>
                                             @endif
-
                                         </tr>
                                     @endforeach
                                     </tbody>

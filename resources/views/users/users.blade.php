@@ -88,6 +88,7 @@
                                                         <option value="PARKINGADMIN">Admin</option>
                                                         <option value="REPORTS">Reports</option>
                                                         <option value="OFFSTREET">Attendant</option>
+                                                        <option value="CASHOFFICE">Cashier</option>
                                                     </select>
                                                 </div>
                                             </div>

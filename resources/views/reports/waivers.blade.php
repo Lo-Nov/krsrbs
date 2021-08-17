@@ -46,13 +46,12 @@
                                     <thead>
                                     <tr>
                                         <th>Reference.</th>
-                                        <th>number_plate</th>
-                                        <th>narration</th>
-                                        <th>bill_reference</th>
-                                        <th>transaction_date</th>
+                                        <th>Number Plate</th>
+                                        <th>Narration</th>
+                                        <th>Bill Reference</th>
                                         <th>Amount Paid</th>
-                                        <th>amount_waivered</th>
-                                        <th>transaction_date</th>
+                                        <th>Amount Waivered</th>
+                                        <th>Transaction Date</th>
                                     </tr>
                                     </thead>
 
@@ -63,10 +62,10 @@
                                             <td>{{ $item->number_plate }}</td>
                                             <td>{{ $item->narration }}</td>
                                             <td>{{ $item->bill_reference }}</td>
-                                            <td>{{ $item->transaction_date }}</td>
-                                            <td>{{ number_format($item->amount_paid,2) }}</td>
-                                            <td>{{ number_format($item->amount_waivered,2) }}</td>
-                                            <td>{{ $item->transaction_date }}</td>
+                                            <td>KES {{ number_format($item->amount_paid,2) }}</td>
+                                            <td>KES {{ number_format($item->amount_waivered,2) }}</td>
+                                            <td>  {{ \Carbon\Carbon::parse($item->transaction_date)->format('d/m/Y') }}</td>
+
                                         </tr>
                                     @endforeach
                                     </tbody>

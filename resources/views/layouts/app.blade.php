@@ -63,6 +63,7 @@
                 </li>
 
                 <li class="side-nav-title side-nav-item">Apps</li>
+                @if(\Illuminate\Support\Facades\Session::get('roles')=="OFFSTREET" || \Illuminate\Support\Facades\Session::get('roles')=="PARKINGADMIN" )
                 <li class="side-nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarExtendedUI" aria-expanded="false" aria-controls="sidebarExtendedUI" class="side-nav-link">
                         <i class="uil-package"></i>
@@ -80,7 +81,11 @@
                         </ul>
                     </div>
                 </li>
+                @else
 
+                @endif
+
+                @if(\Illuminate\Support\Facades\Session::get('roles')=="CASHOFFICE" || \Illuminate\Support\Facades\Session::get('roles')=="PARKINGADMIN" )
                 <li class="side-nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
                         <i class="uil-envelope"></i>
@@ -105,7 +110,11 @@
                         </ul>
                     </div>
                 </li>
+                @else
 
+                @endif
+
+                @if(\Illuminate\Support\Facades\Session::get('roles')=="PARKINGADMIN" )
                 <li class="side-nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarTasks" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
                         <i class="uil-clipboard-alt"></i>
@@ -126,7 +135,11 @@
                         </ul>
                     </div>
                 </li>
+                @else
 
+                @endif
+
+                @if(\Illuminate\Support\Facades\Session::get('roles')=="REPORTS" || \Illuminate\Support\Facades\Session::get('roles')=="PARKINGADMIN" )
                 <li class="side-nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarTables" aria-expanded="false" aria-controls="sidebarTables" class="side-nav-link">
                         <i class="uil-table"></i>
@@ -147,7 +160,8 @@
                         </ul>
                     </div>
                 </li>
-
+                @else
+                @endif
                 <li class="side-nav-item">
                     <a class="side-nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();" data-toggle-fullscreen="">
                         <i class="uil-sign-out-alt"></i>
@@ -156,9 +170,6 @@
                     <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
-
-
-
                 </li>
 
 
@@ -190,90 +201,13 @@
                             </form>
                         </div>
                     </li>
-                    <li class="dropdown notification-list topbar-dropdown">
-                        <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                            <img src="{{ asset('assets/images/flags/us.jpg') }}" alt="user-image" class="me-0 me-sm-1" height="12">
-                            <span class="align-middle d-none d-sm-inline-block">English</span> <i class="mdi mdi-chevron-down d-none d-sm-inline-block align-middle"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu">
 
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <img src="{{ asset('assets/images/flags/germany.jpg') }}" alt="user-image" class="me-1" height="12"> <span class="align-middle">German</span>
-                            </a>
-
-                        </div>
-                    </li>
-
-                    <li class="dropdown notification-list">
-                        <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                            <i class="dripicons-bell noti-icon"></i>
-                            <span class="noti-icon-badge"></span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated dropdown-lg">
-
-                            <!-- item-->
-                            <div class="dropdown-item noti-title">
-                                <h5 class="m-0">
-                                            <span class="float-end">
-                                                <a href="javascript: void(0);" class="text-dark">
-                                                    <small>Clear All</small>
-                                                </a>
-                                            </span>Notification
-                                </h5>
-                            </div>
-
-                            <div style="max-height: 230px;" data-simplebar>
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <div class="notify-icon bg-primary">
-                                        <i class="mdi mdi-comment-account-outline"></i>
-                                    </div>
-                                    <p class="notify-details">Payments
-                                        <small class="text-muted">200 shillings made - 1 min ago</small>
-                                    </p>
-                                </a>
-                            </div>
-
-                            <!-- All-->
-                            <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
-                                View All
-                            </a>
-
-                        </div>
-                    </li>
 
                     <li class="dropdown notification-list d-none d-sm-inline-block">
                         <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                             <i class="dripicons-view-apps noti-icon"></i>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated dropdown-lg p-0">
 
-                            <div class="p-2">
-                                <div class="row g-0">
-                                    <div class="col">
-                                        <a class="dropdown-icon-item" href="#">
-                                            <img src="{{ asset('assets/images/brands/slack.png') }}" alt="slack">
-                                            <span>Slack</span>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a class="dropdown-icon-item" href="#">
-                                            <img src="{{asset('assets/images/brands/github.png')}}" alt="Github">
-                                            <span>GitHub</span>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a class="dropdown-icon-item" href="#">
-                                            <img src="{{ asset('assets/images/brands/dribbble.png') }}" alt="dribbble">
-                                            <span>Dribbble</span>
-                                        </a>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
                     </li>
 
                     <!--<li class="notification-list">
