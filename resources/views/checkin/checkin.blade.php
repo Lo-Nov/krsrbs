@@ -34,7 +34,7 @@
                                        <div class="mb-3">
                                            <label class="form-label">Categories</label>
                                            <select class="form-select form-control-light" name="category_id">
-                                               <option>Select Project</option>
+                                               <option>Select Category</option>
                                                @foreach($categories->data as $item)
                                                    <option value="{{ $item->id }}">{{ $item->category_name }}</option>
                                                @endforeach
