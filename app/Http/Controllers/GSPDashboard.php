@@ -194,7 +194,9 @@ class GSPDashboard extends Controller
             'amount_paid'=> $request->amount_paid,
             'transaction_date'=> $request->transaction_date,
         ];
+
         $response = json_decode(Http::post($url,$data)->body());
+        dd($response);
         return response()->json($response);
     }
 

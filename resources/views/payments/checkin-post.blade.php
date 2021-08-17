@@ -68,7 +68,7 @@
                                             <td>{{ $item->number_of_occupants }}</td>
                                             <td>{{ $item->destination }}</td>
                                             <td>{{ $item->slot }}</td>
-                                            <td>KES {{ number_format($item->amount_due,2) }}</td>
+                                            <td>{{ number_format($item->amount_due) }}</td>
                                             <td>  {{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y') }}</td>
                                             <td>{{ $item->attendant_name }}</td>
                                             @if($item->amount_due > 0 )
@@ -207,7 +207,6 @@
 
     <script type="text/javascript">
         $('.postpayment').click(function(e){
-
             e.preventDefault();
 
             var reference = $('#reference').val();
