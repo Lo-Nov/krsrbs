@@ -28,12 +28,12 @@
                     <form action="{{ route('gsp-auth') }}" method="post">@csrf
                         <div class="mb-3">
                             <label for="emailaddress" class="form-label">Enter Username</label>
-                            <input class="form-control" type="text" name="user_name" value="Parking01" required="" placeholder="Enter your email">
+                            <input class="form-control" type="text" name="user_name" required="" placeholder="Enter your email">
                         </div>
                         <div class="mb-3">
                             <a href="#" class="text-muted float-end"><small>Forgot your password?</small></a>
                             <label for="password" class="form-label">Password</label>
-                            <input class="form-control" type="password" required="" value="1234" name="password" placeholder="Enter your password">
+                            <input class="form-control" type="password" required="" name="password" placeholder="Enter your password">
                         </div>
                         <div class="mb-3">
                             <div class="form-check">

@@ -224,7 +224,7 @@
                                     </span>
                             <span>
                                         <span class="account-user-name">{{ \Illuminate\Support\Facades\Session::get('first_name') }}</span>
-                                        <span class="account-position">Founder</span>
+                                        <span class="account-position">{{ \Illuminate\Support\Facades\Session::get('roles') }}</span>
                                     </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
