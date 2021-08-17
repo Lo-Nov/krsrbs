@@ -16,7 +16,7 @@
                             <li class="breadcrumb-item active">Data Tables</li>
                         </ol>
                     </div>
-                    <h4 class="page-title">All Checked In Vehicles</h4>
+                    <h4 class="page-title">All Checked In Vehicles Waiting Payment Posting </h4>
                 </div>
             </div>
         </div>
@@ -47,10 +47,6 @@
                                     <tr>
                                         <th>Plate No.</th>
                                         <th>Drv Name</th>
-                                        <th>Drv Number</th>
-                                        <th>Occupants</th>
-                                        <th>Destination</th>
-                                        <th>Slot</th>
                                         <th>Amount Due</th>
                                         <th>Date</th>
                                         <th>Attendant Name</th>
@@ -64,16 +60,12 @@
                                         <tr>
                                             <td>{{ $item->number_plate }}</td>
                                             <td>{{ $item->driver_name }}</td>
-                                            <td>{{ $item->driver_phone_number }}</td>
-                                            <td>{{ $item->number_of_occupants }}</td>
-                                            <td>{{ $item->destination }}</td>
-                                            <td>{{ $item->slot }}</td>
                                             <td>{{ number_format($item->amount_due) }}</td>
                                             <td>  {{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y') }}</td>
                                             <td>{{ $item->attendant_name }}</td>
                                             @if($item->amount_due > 0 )
                                             <td>
-                                                <button class="btn btn-primary btnSelect" data-bs-toggle="modal" data-bs-target="#get-id"> <i class="zmdi zmdi-check-square"></i> Pay</button>
+                                                <button class="btn btn-primary btnSelect" data-bs-toggle="modal" data-bs-target="#get-id"> <i class="zmdi zmdi-check-square"></i>Make Payment</button>
                                             </td>
                                             @else
                                                 <td><span class="badge badge-success-lighten">Fully Paid</span></td>
@@ -190,7 +182,7 @@
                 $("#get-id #labId").val(lab_val);
 
                 $('#get-id .modal-body .the-id0').val(col1);
-                $('#get-id .modal-body .the-id6').val(col6);
+                $('#get-id .modal-body .the-id6').val(col2);
                 $('#get-id .modal-body .the-id2').val(col3);
                 $('#inspectionCodeText').text($('#inspectionCode').val());
 
