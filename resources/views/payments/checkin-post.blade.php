@@ -46,7 +46,6 @@
                                     <thead>
                                     <tr>
                                         <th>Plate No.</th>
-                                        <th>Drv Name</th>
                                         <th>Amount Due</th>
                                         <th>Date</th>
                                         <th>Attendant Name</th>
@@ -59,7 +58,6 @@
                                     @foreach($checkins->data as $key=>$item)
                                         <tr>
                                             <td>{{ $item->number_plate }}</td>
-                                            <td>{{ $item->driver_name }}</td>
                                             <td>{{ number_format($item->amount_due) }}</td>
                                             <td>  {{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y') }}</td>
                                             <td>{{ $item->attendant_name }}</td>
@@ -103,7 +101,7 @@
                                                         <div class="col-md-6">
                                                             <div class="mb-3">
                                                                 <label for="task-title" class="form-label">Amount Paid</label>
-                                                                <input type="text" class="form-control form-control-light the-id6" id="amount_paid" placeholder="Enter amount_paid" readonly>
+                                                                <input type="text" class="form-control form-control-light the-id2" id="amount_paid" placeholder="Enter amount_paid" readonly>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
@@ -183,7 +181,7 @@
 
                 $('#get-id .modal-body .the-id0').val(col1);
                 $('#get-id .modal-body .the-id6').val(col2);
-                $('#get-id .modal-body .the-id2').val(col3);
+                $('#get-id .modal-body .the-id2').val(id_num);
                 $('#inspectionCodeText').text($('#inspectionCode').val());
 
                 $('#testTittle').html(`<code class="modal_text">  `+id_num+` </code>`);
