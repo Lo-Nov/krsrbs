@@ -59,8 +59,8 @@
                                     <tr>
                                         <td>{{ $key+1 }}</td>
                                         <td>{{ $item->category_name }}</td>
-                                        <td>{{ $item->created_at }}</td>
-                                        <td>{{ $item->updated_at }}</td>
+                                        <td>  {{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y') }}</td>
+                                        <td>  {{ \Carbon\Carbon::parse($item->updated_at)->format('d/m/Y') }}</td>
                                     </tr>
                                     @endforeach
                                     </tbody>

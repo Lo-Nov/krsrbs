@@ -19,15 +19,21 @@ class GSPAuth extends Controller
 
         $data = json_decode(Http::post($url,$payload)->body());
 
-        if ($data->status_code !=200){
+        if ($data->status_code != 200){
             return Redirect::back()->withErrors($data->message);
         }
 
-        Session::put('first_name', $data->first_name);
-        Session::put('roles', $data->roles);
-        Session::put('is_login', 1);
+        if ($data->roles =="PARKINGADMIN"){
+            Session::put('first_name', $data->first_name);
+            Session::put('user_full_name', $data->user_full_name);
+            Session::put('user_id', $data->user_id);
+            Session::put('roles', $data->roles);
+            Session::put('is_login', 1);
 
-        return redirect()->route('dashboard');
+            return redirect()->route('dashboard');
+        }else{
+            return Redirect::back()->withErrors("Not Authorized");
+        }
 
     }
 }

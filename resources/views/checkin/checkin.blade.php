@@ -57,7 +57,7 @@
                                         <div class="mb-3">
                                             <label class="form-label">Checking Time</label>
 {{--                                            <input type="time" class="form-control" data-provide="typeahead" value="{{Carbon\Carbon::now()->format('Y-m-d')."T".Carbon\Carbon::now()->format('H:i')}}" name="checkin_time" placeholder="Time">--}}
-                                            <input type="datetime-local" class="form-control" data-provide="typeahead" name="checkin_time" placeholder="Time">
+                                            <input type="datetime-local" class="form-control" data-provide="typeahead" value="{{Carbon\Carbon::now()->format('Y-m-d')."T".Carbon\Carbon::now()->format('H:i')}}" name="checkin_time" readonly>
                                         </div>
                                     </div> <!-- end col -->
                                 </div>

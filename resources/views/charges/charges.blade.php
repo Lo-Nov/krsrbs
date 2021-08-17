@@ -47,10 +47,10 @@
                                     <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>charge_type</th>
-                                        <th>charge_amount</th>
-                                        <th>status</th>
-                                        <th>created_at</th>
+                                        <th>Charge Type</th>
+                                        <th>Charge Amount</th>
+                                        <th>Status</th>
+                                        <th>Created At</th>
                                     </tr>
                                     </thead>
 
@@ -60,9 +60,15 @@
                                         <tr>
                                             <td>{{ $key+1 }}</td>
                                             <td>{{ $item->charge_type }}</td>
-                                            <td>{{ number_format($item->charge_amount,2) }}</td>
+                                            <td> KES {{ number_format($item->charge_amount,2) }}</td>
+                                            @if($item->status == null)
+                                                <td><span class="badge badge-success-lighten">Active</span></td>
+                                            @else
                                             <td>{{ $item->status }}</td>
-                                            <td>{{ $item->created_at }}</td>
+                                            @endif
+
+                                            <td>  {{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y') }}</td>
+
                                         </tr>
                                     @endforeach
                                     </tbody>

@@ -90,8 +90,7 @@
                     <div class="collapse" id="sidebarEmail">
                         <ul class="side-nav-second-level">
                             <li>
-                                <a href="{{ route('waiver') }}">Waiver</a>
-
+                                <a href="{{ route('checkin-postpay') }}">Post Payment</a>
                             </li>
                             <li>
                                 <a href="{{ route('parking-status') }}">Status</a>
@@ -99,11 +98,9 @@
                             <li>
                                 <a href="{{ route('payments') }}">Payment</a>
                             </li>
-
                             <li>
-                                <a href="{{ route('checkin-postpay') }}">Post Pay</a>
+                                <a href="{{ route('waiver') }}">Waiver</a>
                             </li>
-
 
                         </ul>
                     </div>
@@ -122,6 +119,9 @@
                             </li>
                             <li>
                                 <a href="{{ route('charges') }}">Charges</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('users') }}">Users</a>
                             </li>
                         </ul>
                     </div>

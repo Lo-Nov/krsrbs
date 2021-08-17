@@ -13,6 +13,67 @@ class GSPDashboard extends Controller
 {
 
 
+    public function addusers(Request $request){
+        $url = config('base.auth_URL').'/RevenueSure/api/Account/Register';
+
+        $formData = $request->all();
+        $validator = Validator::make($formData,[
+            'first_name'=>'required',
+            'last_name'=>'required',
+            'email'=>'required',
+            'user_name'=>'required',
+            'password'=>'required',
+            'phone_number'=>'required',
+            'roles'=>'required',
+        ]);
+
+        if ($validator->fails()) {
+            $request->session()->flash('message.level', 'danger');
+            $request->session()->flash('message.content', $validator->errors());
+            return Redirect::back()->withErrors($validator->errors());
+        }
+        $data = [
+            'first_name'=> $request->first_name,
+            'middle_name'=> $request->middle_name,
+            'last_name'=> $request->last_name,
+            'email'=> $request->email,
+            'user_name'=> $request->user_name,
+            'password'=> $request->password,
+            'phone_number'=> $request->phone_number,
+            'roles'=> $request->roles,
+            "roles_List"=> array($request->roles),
+            'national_id'=> $request->national_id,
+            "signature"=> $request->national_id,
+        ];
+
+       // dd($data);
+
+        $response = json_decode(Http::post($url,$data)->body());
+
+        //dd($response);
+
+        if($response->status_code == 200) {
+            $request->session()->flash('message.level', 'success');
+            $request->session()->flash('message.content', $response->message);
+            return redirect()->back()->withErrors($response->message);
+        }else{
+            $request->session()->flash('message.level', 'danger');
+            $request->session()->flash('message.content', $response->message);
+            return redirect()->back()->withErrors($response->message);
+        }
+
+    }
+
+    public function users(){
+        if (Session::get('is_login') != 1) {
+            Session::put('url', url()->current());
+            return redirect()->route('login');
+        }
+
+        return view('users.users');
+    }
+
+
     public function dashboard(){
         if (Session::get('is_login') != 1) {
             Session::put('url', url()->current());
@@ -139,7 +200,7 @@ class GSPDashboard extends Controller
     }
 
     //Checkin
-    public function checkin(){
+    public function checkins(){
         if (Session::get('is_login') != 1) {
             Session::put('url', url()->current());
             return redirect()->route('login');
@@ -163,6 +224,7 @@ class GSPDashboard extends Controller
             'category_id'=>'required',
             'number_plate'=>'required',
             'checkin_time'=>'required',
+
         ]);
 
         if ($validator->fails()) {
@@ -175,10 +237,12 @@ class GSPDashboard extends Controller
             'category_id'=> $request->category_id,
             'number_plate'=> $request->number_plate,
             'checkin_time'=> $request->checkin_time,
+            'attendant_name'=>Session::get('user_full_name'),
+            'attendant_id'=>Session::get('user_id')
         ];
+
+
         $response = json_decode(Http::post($url,$data)->body());
-
-
 
         if($response->status == 200) {
             $request->session()->flash('message.level', 'success');
@@ -218,6 +282,8 @@ class GSPDashboard extends Controller
         }
         $data = [
             'number_plate'=> $request->number_plate,
+            'attendant_name'=>Session::get('user_full_name'),
+            'attendant_id'=>Session::get('user_id')
         ];
         $response = json_decode(Http::post($url,$data)->body());
 
@@ -259,6 +325,8 @@ class GSPDashboard extends Controller
         }
         $data = [
             'number_plate'=> $request->number_plate,
+            'attendant_name'=>Session::get('user_full_name'),
+            'attendant_id'=>Session::get('user_id')
         ];
         $response = json_decode(Http::post($url,$data)->body());
 

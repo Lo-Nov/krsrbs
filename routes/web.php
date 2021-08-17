@@ -34,7 +34,7 @@ Route::get('/charges', [App\Http\Controllers\GSPDashboard::class, 'charges'])->n
 Route::post('/add-new-charge',[App\Http\Controllers\GSPDashboard::class, 'newcharge'])->name('add-new-charge');
 
 //Check in
-Route::get('/check-in', [App\Http\Controllers\GSPDashboard::class, 'checkin'])->name('check-in');
+Route::get('/check-in', [App\Http\Controllers\GSPDashboard::class, 'checkins'])->name('check-in');
 Route::post('/check-in', [App\Http\Controllers\GSPDashboard::class, 'bookcar'])->name('check-in');
 
 //check out
@@ -63,3 +63,10 @@ Route::post('/pushpayment',[App\Http\Controllers\GSPDashboard::class, 'pushpayme
 Route::get('/checkin', [App\Http\Controllers\GSPReports::class, 'checkin'])->name('checkin');
 Route::get('/checkout', [App\Http\Controllers\GSPReports::class, 'checkout'])->name('checkout');
 Route::get('/waivers', [App\Http\Controllers\GSPReports::class, 'waivers'])->name('waivers');
+
+
+
+//Users
+Route::get('/users', [App\Http\Controllers\GSPDashboard::class, 'users'])->name('users');
+Route::post('/users', [App\Http\Controllers\GSPDashboard::class, 'addusers'])->name('users');
+
