@@ -51,7 +51,7 @@
                                         <th>Drv Number</th>
                                         <th>Occupants</th>
                                         <th>Destination</th>
-                                        <th>Slot</th>
+                                        <th>Status</th>
                                         <th>Amount Due </th>
                                         <th>Date</th>
                                         <th>Attendant Name</th>
@@ -69,16 +69,19 @@
                                             <td>{{ $item->number_of_occupants }}</td>
                                             <td>{{ $item->destination }}</td>
 
-                                            <td>{{ $item->slot }}</td>
+                                            <td>{{ $item->status }}</td>
                                             <td>KES {{ number_format($item->amount_due,2) }}</td>
                                             <td>  {{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y') }}</td>
                                             <td>{{ $item->attendant_name }}</td>
                                             @if($item->amount_due <= 0 && $item->status == true)
-                                                <td><span class="badge badge-success-lighten">Checked Out</span></td>
-                                            @elseif($item->amount_due <= 0 && $item->status == false)
                                                 <td>
                                                     <button class="btn btn-primary btnSelect" data-bs-toggle="modal" data-bs-target="#get-id"> <i class="zmdi zmdi-check-square"></i> Check Out</button>
                                                 </td>
+{{--                                            @elseif($item->amount_due <= 0 && $item->status == false)--}}
+{{--                                                <td>--}}
+{{--                                                    <span class="badge badge-success-lighten">Checked Out</span>--}}
+
+{{--                                                </td>--}}
                                             @else
                                                 <td><span class="badge badge-danger-lighten">Unpaid</span></td>
                                             @endif
