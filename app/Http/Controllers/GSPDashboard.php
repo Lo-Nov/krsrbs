@@ -95,6 +95,20 @@ class GSPDashboard extends Controller
 
         return view('home')->with($this->data);
     }
+    public function fdashboard(Request $request){
+        if (Session::get('is_login') != 1) {
+            Session::put('url', url()->current());
+            return redirect()->route('login');
+        }
+        $url = config('base.main_URL').'/parking/reporting/dashboard';
+        $data=[
+            'start_date'=> $request->start_date,
+            'end_date'=> $request->end_date
+        ];
+        $this->data['dashboard'] = json_decode(Http::post($url,$data)->body());
+
+        return view('home')->with($this->data);
+    }
 
     public function categories(){
 
@@ -170,6 +184,27 @@ class GSPDashboard extends Controller
         $data=[
             'start_date'=> "",
             'end_date'=> ""
+        ];
+
+        $this->data['checkins'] = json_decode(Http::post($url,$data)->body());
+
+        //dd($this->data);
+
+        return view('payments.checkin-post')->with($this->data);
+    }
+    public function fcheckinpostpay(Request $request){
+        if (Session::get('is_login') != 1) {
+            Session::put('url', url()->current());
+            return redirect()->route('login');
+        }
+        $url = config('base.main_URL').'/parking/reporting/checkins';
+
+        $dt = Carbon::now();
+        $dt->toDateString();
+
+        $data=[
+            'start_date'=> $request->start_date,
+            'end_date'=> $request->end_date
         ];
 
         $this->data['checkins'] = json_decode(Http::post($url,$data)->body());
@@ -272,6 +307,27 @@ class GSPDashboard extends Controller
         $data=[
             'start_date'=> "",
             'end_date'=> ""
+        ];
+
+        $this->data['checkins'] = json_decode(Http::post($url,$data)->body());
+
+        //dd($this->data);
+        return view('checkout.checkout')->with($this->data);
+
+    }
+    public function checkoutfilter(Request $request){
+        if (Session::get('is_login') != 1) {
+            Session::put('url', url()->current());
+            return redirect()->route('login');
+        }
+        $url = config('base.main_URL').'/parking/reporting/checkins';
+
+        $dt = Carbon::now();
+        $dt->toDateString();
+
+        $data=[
+            'start_date'=> $request->start_date,
+            'end_date'=> $request->end_date
         ];
 
         $this->data['checkins'] = json_decode(Http::post($url,$data)->body());

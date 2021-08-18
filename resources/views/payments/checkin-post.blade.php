@@ -10,11 +10,13 @@
             <div class="col-12">
                 <div class="page-title-box">
                     <div class="page-title-right">
-                        <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
-                            <li class="breadcrumb-item active">Data Tables</li>
-                        </ol>
+                        <form method="post" action="{{ route('checkin-postpay') }}">@csrf
+                            <ol class="breadcrumb m-0">
+                                <li class=""><input type="date" name="start_date" class="form-control"></li>
+                                <li class=""><input type="date" name="end_date" class="form-control"></li>
+                                <li class="breadcrumb-item"><button class="btn btn-warning" type="submit">Search</button></li>
+                            </ol>
+                        </form>
                     </div>
                     <h4 class="page-title">All Checked In Vehicles Waiting Payment Posting </h4>
                 </div>

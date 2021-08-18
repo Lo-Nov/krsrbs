@@ -24,6 +24,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //Auth
 Route::post('/gsp-auth', [App\Http\Controllers\GSPAuth::class, 'auth'])->name('gsp-auth');
 Route::get('/dashboard', [App\Http\Controllers\GSPDashboard::class, 'dashboard'])->name('dashboard');
+Route::post('/dashboard', [App\Http\Controllers\GSPDashboard::class, 'fdashboard'])->name('dashboard');
 
 //Categories
 Route::get('/categories', [App\Http\Controllers\GSPDashboard::class, 'categories'])->name('categories');
@@ -40,6 +41,7 @@ Route::post('/check-in', [App\Http\Controllers\GSPDashboard::class, 'bookcar'])-
 //check out
 Route::get('/check-out', [App\Http\Controllers\GSPDashboard::class, 'checkout'])->name('check-out');
 Route::post('/check-out', [App\Http\Controllers\GSPDashboard::class, 'toagari'])->name('check-out');
+Route::post('/check-out-filter', [App\Http\Controllers\GSPDashboard::class, 'checkoutfilter'])->name('check-out-filter');
 
 //Parking status
 Route::get('/parking-status', [App\Http\Controllers\GSPDashboard::class, 'parkingstatus'])->name('parking-status');
@@ -54,6 +56,7 @@ Route::post('/waiver', [App\Http\Controllers\GSPDashboard::class, 'waiverpenalti
 Route::get('/payments', [App\Http\Controllers\GSPDashboard::class, 'payments'])->name('payments');
 Route::post('/payments', [App\Http\Controllers\GSPDashboard::class, 'postpayments'])->name('payments');
 Route::get('/checkin-postpay', [App\Http\Controllers\GSPDashboard::class, 'checkinpostpay'])->name('checkin-postpay');
+Route::post('/checkin-postpay', [App\Http\Controllers\GSPDashboard::class, 'fcheckinpostpay'])->name('checkin-postpay');
 Route::post('/pushpayment',[App\Http\Controllers\GSPDashboard::class, 'pushpayment'])->name('pushpayment');
 
 
@@ -61,8 +64,11 @@ Route::post('/pushpayment',[App\Http\Controllers\GSPDashboard::class, 'pushpayme
 
 //GSPReports
 Route::get('/checkin', [App\Http\Controllers\GSPReports::class, 'checkin'])->name('checkin');
+Route::post('/checkin', [App\Http\Controllers\GSPReports::class, 'fcheckin'])->name('checkin');
 Route::get('/checkout', [App\Http\Controllers\GSPReports::class, 'checkout'])->name('checkout');
+Route::post('/checkout', [App\Http\Controllers\GSPReports::class, 'fcheckout'])->name('checkout');
 Route::get('/waivers', [App\Http\Controllers\GSPReports::class, 'waivers'])->name('waivers');
+Route::post('/waivers', [App\Http\Controllers\GSPReports::class, 'fwaivers'])->name('waivers');
 
 
 

@@ -403,7 +403,7 @@
 <!-- third party js ends -->
 
 <!-- demo app -->
-<script src="assets/js/pages/demo.datatable-init.js"></script>
+<script src="{{ asset('assets/js/pages/demo.datatable-init.js') }}"></script>
 
 
 </body>

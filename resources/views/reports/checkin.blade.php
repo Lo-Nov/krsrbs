@@ -10,11 +10,13 @@
             <div class="col-12">
                 <div class="page-title-box">
                     <div class="page-title-right">
-                        <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
-                            <li class="breadcrumb-item active">Data Tables</li>
-                        </ol>
+                        <form method="post" action="{{ route('checkin') }}">@csrf
+                            <ol class="breadcrumb m-0">
+                                <li class=""><input type="date" name="start_date" class="form-control"></li>
+                                <li class=""><input type="date" name="end_date" class="form-control"></li>
+                                <li class="breadcrumb-item"><button class="btn btn-warning" type="submit">Search</button></li>
+                            </ol>
+                        </form>
                     </div>
                     <h4 class="page-title">All Checked In Vehicles</h4>
                 </div>
@@ -46,9 +48,6 @@
                                     <thead>
                                     <tr>
                                         <th>Plate No.</th>
-                                        <th>Drv Name</th>
-                                        <th>Drv Id</th>
-                                        <th>Drv Number</th>
                                         <th>Occupants</th>
                                         <th>Destination</th>
                                         <th>Amount Due</th>
@@ -64,12 +63,14 @@
                                     @foreach($checkins->data as $key=>$item)
                                         <tr>
                                             <td>{{ $item->number_plate }}</td>
-                                            <td>{{ $item->driver_name }}</td>
-                                            <td>{{ $item->driver_id }}</td>
-                                            <td>{{ $item->driver_phone_number }}</td>
                                             <td>{{ $item->number_of_occupants }}</td>
                                             <td>{{ $item->destination }}</td>
-                                            <td>{{ number_format($item->amount_due,2) }}</td>
+                                            @if($item->amount_due <= 0)
+                                              <td><span class="badge badge-success-lighten">Fully Paid</span></td>
+                                            @else
+                                             <td>{{ number_format($item->amount_due,2) }}</td>
+                                            @endif
+
                                             <td>{{ $item->duration }}</td>
                                             <td>{{ $item->attendant_name }}</td>
                                             <td>  {{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y') }}</td>
