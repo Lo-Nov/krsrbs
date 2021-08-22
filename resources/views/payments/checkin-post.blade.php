@@ -88,7 +88,7 @@
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <div class="mb-3">
-                                                                <label for="task-title" class="form-label">Refence Number</label>
+                                                                <label for="task-title" class="form-label">Reference Number</label>
                                                                 <input type="text" class="form-control form-control-light" id="reference" placeholder="Enter charge type">
                                                             </div>
                                                         </div>
@@ -103,7 +103,7 @@
                                                         <div class="col-md-6">
                                                             <div class="mb-3">
                                                                 <label for="task-title" class="form-label">Amount Paid</label>
-                                                                <input type="text" class="form-control form-control-light the-id2" id="amount_paid" placeholder="Enter amount_paid" readonly>
+                                                                <input type="text" class="form-control form-control-light the-id2" id="amount_paid" placeholder="Enter amount_paid">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
