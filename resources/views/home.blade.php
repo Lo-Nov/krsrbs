@@ -87,6 +87,7 @@
                                 <thead class="table-light">
                                 <tr>
                                     <th>Charge Type</th>
+                                    <th>Counts</th>
                                     <th>Amount (KES)</th>
                                 </tr>
                                 </thead>
@@ -96,6 +97,7 @@
                                 @foreach($dashboard->data->charge_type as $item)
                                 <tr>
                                     <td>{{ $item->name }}</td>
+                                    <td>{{ $item->vehicle_count }}</td>
                                     <td>{{ number_format($item->total,2) }}</td>
                                 </tr>
                                 @endforeach
@@ -117,6 +119,7 @@
                                 <thead class="table-light">
                                 <tr>
                                     <th>Category Type</th>
+                                    <th>Count</th>
                                     <th>Amount (KES)</th>
                                 </tr>
                                 </thead>
@@ -124,8 +127,8 @@
                                 @foreach($dashboard->data->category as $item)
                                 <tr>
                                     <td>{{ $item->name }}</td>
+                                    <td>{{ $item->vehicle_count }}</td>
                                     <td>{{ number_format($item->total,2) }}</td>
-
                                 </tr>
                                 @endforeach
                                 </tbody>

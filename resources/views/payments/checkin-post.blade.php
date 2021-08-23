@@ -113,10 +113,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
-
-
-
                                                     <div class="text-end">
                                                         <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
                                                         <button type="button" class="btn btn-warning postpayment">Create</button>
@@ -127,8 +123,6 @@
                                                         </span>
                                                     </div>
                                                 </form>
-
-
                                             </div>
                                         </div><!-- /.modal-content -->
                                     </div><!-- /.modal-dialog -->
